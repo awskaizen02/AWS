@@ -1,68 +1,102 @@
 # 🐚 Shell Scripting Notes (Basic → Advanced)
 
 ## 1. Introduction to Shell
+
 - **[What is Shell](ca://s?q=Explain_what_is_Shell)**: Command interpreter for Unix/Linux.
 - **[Why Shell Scripting](ca://s?q=Why_use_Shell_Scripting)**: Automates repetitive tasks, system administration, DevOps workflows.
 
-- **[Types of Shells](ca://s?q=Types_of_Shells)**:
+## **[Types of Shells](ca://s?q=Types_of_Shells)**
+
 | Shell | Description        |
-| ----- | ------------------ |
-| sh    | Bourne Shell       |
-| bash  | Bourne Again Shell |
-| ksh   | Korn Shell         |
-| csh   | C Shell            |
-| zsh   | Z Shell            |
+| ------ | ------------------ |
+| sh     | Bourne Shell       |
+| bash   | Bourne Again Shell |
+| ksh    | Korn Shell         |
+| csh    | C Shell            |
+| zsh    | Z Shell            |
 
 ---
-* Shell Script File Extension
-```
+
+## Shell Script File Extension
+
+```sh
 .sh
 test.sh
 ```
 
-
 ---
 
 ## 2. Basics of Shell Scripting
-- **[Script Structure](ca://s?q=Shell_script_structure)**:
-  ```
-  bash
-  #!/bin/bash
-  echo "Hello World"
+
+### **[Script Structure](ca://s?q=Shell_script_structure)**
+
+```bash
+#!/bin/bash
+echo "Hello World"
 ```
-# Give Permission
-* chmod +x test.sh
 
-# Execute Script
-* ./test.sh
+## Give Permission
 
-# Understanding Shebang
+```bash
+chmod +x test.sh
+```
 
-* #!/bin/bash
+## Execute Script
 
-* Purpose:
+```bash
+./test.sh
+```
+
+## Understanding Shebang
+
+```bash
+#!/bin/bash
+```
+
+### Purpose
+
 - Defines interpreter
 - Executes script using Bash shell
+
 ---
 
-* Single Line Comment #
+## Comments
 
-* Multi Line Comment ' lineone linetwo '
----
+### Single Line Comment
 
-Variables:
+```bash
+# This is a comment
 ```
+
+### Multi Line Comment
+
+```bash
+: '
+line one
+line two
+'
+```
+
+---
+
+## Variables
+
+```bash
 name="Raja"
 echo "Welcome $name"
 ```
+
 ---
-User Input:
-```
+
+## User Input
+
+```bash
 read -p "Enter your age: " age
 echo "You are $age years old"
-
 ```
+
 ---
+
 # Special Variables
 
 | Variable | Meaning              |
@@ -74,6 +108,7 @@ echo "You are $age years old"
 | `$@`     | Separate arguments   |
 | `$$`     | Process ID           |
 | `$?`     | Exit status          |
+
 ---
 
 # Exit Status
@@ -83,14 +118,17 @@ echo "You are $age years old"
 | 0        | Success |
 | Non-zero | Failure |
 
-```
+```bash
 mkdir test
 
 echo $?
 ```
+
 ---
+
 # Arithmetic Operations
-```
+
+```bash
 a=10
 b=20
 
@@ -98,13 +136,17 @@ sum=`expr $a + $b`
 
 echo $sum
 ```
-# Using Double Parenthesis
-```
+
+## Using Double Parenthesis
+
+```bash
 sum=$((10+20))
 
 echo $sum
 ```
+
 ---
+
 # Arithmetic Operators
 
 | Operator | Meaning        |
@@ -146,8 +188,10 @@ echo $sum
 | -x       | Execute permission |
 
 ---
+
 # IF Statement
-```
+
+```bash
 #!/bin/bash
 
 a=10
@@ -157,8 +201,10 @@ then
     echo "Greater"
 fi
 ```
+
 # IF ELSE
-```
+
+```bash
 #!/bin/bash
 
 a=2
@@ -170,8 +216,10 @@ else
     echo "Smaller"
 fi
 ```
+
 # IF ELIF ELSE
-```
+
+```bash
 #!/bin/bash
 
 marks=70
@@ -186,10 +234,14 @@ else
     echo "Grade C"
 fi
 ```
+
 ---
-## Control Structures
-Conditional Statements:
-```
+
+# Control Structures
+
+## Conditional Statements
+
+```bash
 if [ $age -ge 18 ]; then
   echo "Adult"
 else
@@ -198,14 +250,18 @@ fi
 ```
 
 ---
-# Loops:
-```
+
+# Loops
+
+```bash
 for i in {1..5}; do
   echo "Iteration $i"
 done
 ```
-* FOR Loop
-```
+
+## FOR Loop
+
+```bash
 #!/bin/bash
 
 for i in 1 2 3 4 5
@@ -213,9 +269,10 @@ do
     echo $i
 done
 ```
-* WHILE Loop
 
-```
+## WHILE Loop
+
+```bash
 #!/bin/bash
 
 count=1
@@ -227,8 +284,9 @@ do
 done
 ```
 
-* UNTIL Loop
-```
+## UNTIL Loop
+
+```bash
 #!/bin/bash
 
 count=1
@@ -239,9 +297,12 @@ do
     count=$((count+1))
 done
 ```
+
 ---
+
 # Break Statement
-```
+
+```bash
 for i in 1 2 3 4 5
 do
     if [ $i -eq 3 ]
@@ -252,8 +313,10 @@ do
     echo $i
 done
 ```
+
 # Continue Statement
-```
+
+```bash
 for i in 1 2 3 4 5
 do
     if [ $i -eq 3 ]
@@ -264,51 +327,73 @@ do
     echo $i
 done
 ```
+
 ---
-# Functions:
-```
+
+# Functions
+
+```bash
 greet() {
   echo "Hello $1"
 }
-greet Raja
 
+greet Raja
 ```
-#Exit Codes: 0 = success, non‑zero = error.
+
+## Exit Codes
+
+```text
+0 = success
+non-zero = error
+```
+
 ---
+
 # File Handling
-* Redirects: >, >>, 2>.
-* Pipes: ls | grep ".sh".
-```
+
+- Redirects: `>`, `>>`, `2>`
+- Pipes: `ls | grep ".sh"`
+
+```bash
 while read line; do
   echo $line
 done < file.txt
 ```
 
 ---
-# Arrays:
-```
+
+# Arrays
+
+```bash
 arr=("one" "two" "three")
 echo ${arr[1]}
-
 ```
-* Regular Expressions with grep, sed, awk.
-* Error Handling using trap and set -e.
-* Cron Jobs for automation.
+
+- Regular Expressions with `grep`, `sed`, `awk`
+- Error Handling using `trap` and `set -e`
+- Cron Jobs for automation
+
 ---
+
 # Function Syntax
 
-```
+```bash
 function hello() {
 
     echo "Hello World"
 
 }
 ```
-* hello
+
+```bash
+hello
+```
 
 ---
+
 # Function with Arguments
-```
+
+```bash
 #!/bin/bash
 
 function add() {
@@ -324,35 +409,46 @@ echo $result
 ```
 
 ---
+
 # Create Array
-```
+
+```bash
 names=("Linux" "DevOps" "AWS")
 ```
-- Access Elements
-```
+
+## Access Elements
+
+```bash
 echo ${names[0]}
 ```
-- Print All Elements
-```
+
+## Print All Elements
+
+```bash
 echo ${names[@]}
 ```
+
 ---
+
 # Read File Line by Line
-```
+
+```bash
 while read line
 do
     echo $line
 done < file.txt
 ```
+
 ---
+
 # Redirect Operators
 
-| Operator | Purpose         |
-| -------- | --------------- |
-| >        | Redirect output |
-| >>       | Append output   |
-| <        | Input redirect  |
-| 2>       | Redirect error  |
+| Operator | Purpose          |
+| -------- | ---------------- |
+| >        | Redirect output  |
+| >>       | Append output    |
+| <        | Input redirect   |
+| 2>       | Redirect error   |
 
 # Standard Streams
 
@@ -363,15 +459,18 @@ done < file.txt
 | stderr | Standard Error  |
 
 ---
-```
+
+```bash
 #!/bin/bash
 
 mkdir myfolder
 
 echo "Folder created successfully"
 ```
----------
-```
+
+---
+
+```bash
 #!/bin/bash
 
 echo "Enter folder name:"
@@ -381,8 +480,10 @@ mkdir $folder
 
 echo "$folder created successfully"
 ```
+
 ---
-```
+
+```bash
 #!/bin/bash
 
 folder="backup_$(date +%Y%m%d_%H%M%S)"
@@ -391,8 +492,10 @@ mkdir $folder
 
 echo "Created folder: $folder"
 ```
+
 ---
-```
+
+```bash
 #!/bin/bash
 
 project="DevOps_Project"
@@ -401,8 +504,10 @@ mkdir -p $project/{scripts,logs,configs,backup}
 
 echo "Project structure created"
 ```
+
 ---
-```
+
+```bash
 #!/bin/bash
 
 echo "Enter folder name:"
@@ -420,14 +525,5 @@ else
     echo "Folder '$folder' created successfully"
 fi
 ```
----
----
 
 ---
-
----
-
----
-
-
-
