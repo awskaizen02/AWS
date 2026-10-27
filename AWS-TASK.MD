@@ -1,6 +1,6 @@
 ![AWS-TASK](AWS-TASK.jpg)
-# Region-1 -> N.V (vpc-1)
-# Region-2 -> Mum (vpc-2)
+# Region-1 -> N.V (vpc-1) 192.168.0.0/24
+# Region-2 -> Mum (vpc-2) 10.0.0.0/24
 
 #create vpc-1 192.68.0.0/24 with 6 subnets each need 10 ip's. sn1 and sn2 public and other subnets are private
 * in sn1 jumpserver
@@ -33,7 +33,7 @@ create folder voice in app-2  (place some sample files)
 
 # create peering b/w vpc-1 and vpc-2
 
-# create vpc-2 with 6 subnets sn1 and sn2 public and other subnets are private
+# create vpc-2 with 6 subnets sn1 and sn2 public and other subnets are private # 10.0.0.0/24
 * in sn1 jumpserver
 * in sn2 nat gateway
 * in sn3 app-1 server (awslinux 2003)
@@ -63,7 +63,7 @@ create folder voice in app-2  (place some sample files)
 
 * in s3-bucket-2 after replication will comes with Doc and voice folder
 
-* sync s3-bucket-2 Doc to app-2 Doc
+* sync s3-bucket-2 Doc to app-1 Doc
 * sync s3-bucket-2 voice to app-2 voice
 
 # create buctet name sample.xyz (with sample image) and connect CDN
