@@ -5,9 +5,9 @@
 #create vpc-1 192.68.0.0/24 with 6 subnets each need 10 ip's. sn1 and sn2 public and other subnets are private
 * in sn1 jumpserver
 * in sn2 nat gateway
-* in sn3 app-1 server (awslinux 2003)
-* in sn4 app-2 server (ubuntu)
-* in sn5 sql server
+* in sn3 app-1 server (awslinux 2003) # Install Httpd
+* in sn4 app-2 server (ubuntu)        # Install apache2
+* in sn5 sql server                   #  RDS - mysql
 
 
 # create EBS voluem 1-GB attache into APP-1 server
